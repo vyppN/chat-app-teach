@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1007539997944",
+    "firebase_url": "https://chat-709d3.firebaseio.com",
+    "project_id": "chat-709d3",
+    "storage_bucket": "chat-709d3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007539997944:android:ef22082b8cd737a0b13f0d",
+        "android_client_info": {
+          "package_name": "me.vyppnn.teachchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1007539997944-da267khku9130vo0h0er9ac5t6bsb0a9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5weCtBP8-lu784y3BOrXMU_7HsmGYbf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1007539997944-da267khku9130vo0h0er9ac5t6bsb0a9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1007539997944-ce1mfct0u0sto04abl72kakrqctbnkp0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "me.vyppn.teachchat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
