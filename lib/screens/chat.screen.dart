@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-final _firestore = Firestore.instance;
+
 
 class ChatScreen extends StatefulWidget {
   static String id = 'chat_screen';
@@ -16,10 +16,11 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-
-  final messageTextController = TextEditingController();
-  String messageText;
+  final _firestore = Firestore.instance;
   final _auth = FirebaseAuth.instance;
+  final messageTextController = TextEditingController();
+
+  String messageText;
   FirebaseUser loggedInUser;
 
   @override
