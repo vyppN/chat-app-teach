@@ -3,6 +3,7 @@ import 'package:chatapp/components/Inputs/TextInput/password.input.dart';
 import 'package:chatapp/components/Inputs/TextInput/text.input.dart';
 import 'package:chatapp/screens/chat.screen.dart';
 import 'package:chatapp/screens/register.screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +14,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String email = '';
-  String password = '';
+  String email;
+  String password;
+
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +43,16 @@ class _LoginScreenState extends State<LoginScreen> {
             RoundedButton(
               color: Colors.blueAccent,
               title: 'Login',
-              onPressed: (){
-                print('Email: ${this.email} Password:${this.password}');
-                Navigator.pushNamed(context, ChatScreen.id);
+              onPressed: ()async {
+                try{
+                  final user = await _auth.signInWithEmailAndPassword(email: email, password: password);
+                  if(user != null){
+                    Navigator.pushNamed(context, ChatScreen.id);
+                  }
+                }catch(e){
+                  print(e);
+                }
+
               },
             ),
             RoundedButton(

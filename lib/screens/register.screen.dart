@@ -2,6 +2,7 @@ import 'package:chatapp/components/Buttons/RoundedButton/round.button.dart';
 import 'package:chatapp/components/Inputs/TextInput/password.input.dart';
 import 'package:chatapp/components/Inputs/TextInput/text.input.dart';
 import 'package:chatapp/screens/chat.screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -13,6 +14,8 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   String email;
   String password;
+
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +44,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
               RoundedButton(
                 color: Colors.orangeAccent,
                 title: 'Register',
-                onPressed: (){
+                onPressed: () async {
                   print('Email: ${this.email} Password:${this.password}');
-                  Navigator.pushNamed(context,ChatScreen.id);
+                  try{
+                    final newUser = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+                    if(newUser != null){
+                      Navigator.pushNamed(context,ChatScreen.id);
+                    }
+                  }catch(e){
+                    print(e);
+                  }
                 },
               )
             ],

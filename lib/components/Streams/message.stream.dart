@@ -4,9 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 final _firestore = Firestore.instance;
-FirebaseUser loggedInUser;
+
 
 class MessagesStream extends StatelessWidget {
+  final FirebaseUser loggedInUser;
+  MessagesStream({@required this.loggedInUser});
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -19,6 +22,7 @@ class MessagesStream extends StatelessWidget {
             ),
           );
         }
+        // Don't reverse at first
         final messages = snapshot.data.documents.reversed;
         List<MessageBubble> messageBubbles = messages.map((message){
           final messageText = message.data['text'];
@@ -35,6 +39,7 @@ class MessagesStream extends StatelessWidget {
 
         return Expanded(
           child: ListView(
+            // Don't reverse at first
             reverse: true,
             padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 20.0),
             children: messageBubbles,

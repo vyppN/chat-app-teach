@@ -27,13 +27,11 @@ class MessageBubble extends StatelessWidget {
                 ? BorderRadius.only(
                   topLeft: Radius.circular(30.0),
                   topRight: Radius.circular(30.0),
-                  bottomLeft: Radius.circular(30.0),
-                  bottomRight: Radius.circular(30.0),
+                  bottomLeft: Radius.circular(30.0)
                 )
                 :BorderRadius.only(
                   topLeft: Radius.circular(30.0),
                   topRight: Radius.circular(30.0),
-                  bottomLeft: Radius.circular(30.0),
                   bottomRight: Radius.circular(30.0),
             ),
             elevation: 5.0,
@@ -43,7 +41,8 @@ class MessageBubble extends StatelessWidget {
               child: Text(
                 text,
                 style: TextStyle(
-                  fontSize: 15.0
+                  fontSize: 15.0,
+                  color: isMe ? Colors.white:Colors.black87
                 ),
               ),
             ),
